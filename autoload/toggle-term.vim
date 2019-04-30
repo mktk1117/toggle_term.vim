@@ -50,9 +50,9 @@ endfunction
 
 function! toggle-term#MonkeyTerminalToggle()
   if win_gotoid(s:monkey_terminal_window)
-    call MonkeyTerminalClose()
+    call toggle-term#MonkeyTerminalClose()
   else
-    call MonkeyTerminalOpen()
+    call toggle-term#MonkeyTerminalOpen()
   endif
 endfunction
 
@@ -65,7 +65,7 @@ endfunction
 
 function! toggle-term#MonkeyTerminalExec(cmd)
   if !win_gotoid(s:monkey_terminal_window)
-    call MonkeyTerminalOpen()
+    call toggle-term#MonkeyTerminalOpen()
   endif
 
   " clear current input
