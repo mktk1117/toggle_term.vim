@@ -1,15 +1,15 @@
 "=============================================================================
-" File: toggle-term.vim
+" File: toggle_term.vim
 " Author: takahiro
 " Created: 2019-04-30
 "=============================================================================
 
 scriptencoding utf-8
 
-if !exists('g:loaded_toggle-term')
+if !exists('g:loaded_toggle_term')
     finish
 endif
-let g:loaded_toggle-term = 1
+let g:loaded_toggle_term = 1
 
 let s:save_cpo = &cpo
 set cpo&vim
@@ -17,8 +17,11 @@ set cpo&vim
 " This script is from https://gist.github.com/ram535/b1b7af6cd7769ec0481eb2eed549ea23
 " With this function you can reuse the same terminal in neovim.
 " You can toggle the terminal and also send a command to the same terminal.
+let s:monkey_terminal_window = -1
+let s:monkey_terminal_buffer = -1
+let s:monkey_terminal_job_id = -1
 
-function! toggle-term#MonkeyTerminalOpen()
+function! toggle_term#MonkeyTerminalOpen()
   " Check if buffer exists, if not create a window and a buffer
   if !bufexists(s:monkey_terminal_buffer)
     " Creates a window call monkey_terminal
@@ -48,24 +51,24 @@ function! toggle-term#MonkeyTerminalOpen()
   endif
 endfunction
 
-function! toggle-term#MonkeyTerminalToggle()
+function! toggle_term#MonkeyTerminalToggle()
   if win_gotoid(s:monkey_terminal_window)
-    call toggle-term#MonkeyTerminalClose()
+    call toggle_term#MonkeyTerminalClose()
   else
-    call toggle-term#MonkeyTerminalOpen()
+    call toggle_term#MonkeyTerminalOpen()
   endif
 endfunction
 
-function! toggle-term#MonkeyTerminalClose()
+function! toggle_term#MonkeyTerminalClose()
   if win_gotoid(s:monkey_terminal_window)
     " close the current window
     hide
   endif
 endfunction
 
-function! toggle-term#MonkeyTerminalExec(cmd)
+function! toggle_term#MonkeyTerminalExec(cmd)
   if !win_gotoid(s:monkey_terminal_window)
-    call toggle-term#MonkeyTerminalOpen()
+    call toggle_term#MonkeyTerminalOpen()
   endif
 
   " clear current input
