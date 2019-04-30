@@ -18,7 +18,7 @@ set cpo&vim
 " With this function you can reuse the same terminal in neovim.
 " You can toggle the terminal and also send a command to the same terminal.
 
-function! MonkeyTerminalOpen()
+function! toggle-term#MonkeyTerminalOpen()
   " Check if buffer exists, if not create a window and a buffer
   if !bufexists(s:monkey_terminal_buffer)
     " Creates a window call monkey_terminal
@@ -48,7 +48,7 @@ function! MonkeyTerminalOpen()
   endif
 endfunction
 
-function! MonkeyTerminalToggle()
+function! toggle-term#MonkeyTerminalToggle()
   if win_gotoid(s:monkey_terminal_window)
     call MonkeyTerminalClose()
   else
@@ -56,14 +56,14 @@ function! MonkeyTerminalToggle()
   endif
 endfunction
 
-function! MonkeyTerminalClose()
+function! toggle-term#MonkeyTerminalClose()
   if win_gotoid(s:monkey_terminal_window)
     " close the current window
     hide
   endif
 endfunction
 
-function! MonkeyTerminalExec(cmd)
+function! toggle-term#MonkeyTerminalExec(cmd)
   if !win_gotoid(s:monkey_terminal_window)
     call MonkeyTerminalOpen()
   endif

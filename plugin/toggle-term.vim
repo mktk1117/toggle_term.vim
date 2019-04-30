@@ -21,7 +21,7 @@ let s:monkey_terminal_job_id = -1
 " With this maps you can now toggle the terminal
 " nnoremap <F7> :call MonkeyTerminalToggle()<cr>
 " tnoremap <F7> <C-\><C-n>:call MonkeyTerminalToggle()<cr>
-nnoremap <silent><C-t> :call MonkeyTerminalToggle()<cr>
+" nnoremap <silent><C-t> :call MonkeyTerminalToggle()<cr>
 
 
 let &cpo = s:save_cpo
